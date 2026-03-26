@@ -6,11 +6,14 @@ import { Link } from "react-router-dom";
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
+  const [isScrolled, setIsScrolled] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
+      setIsScrolled(currentScrollY > 50);
+      
       if (currentScrollY > lastScrollY && currentScrollY > 80) {
         setIsVisible(false);
       } else {
@@ -22,6 +25,18 @@ export default function Header() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
+
+  // Prevent scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMobileMenuOpen]);
 
   const navLinks = [
     { name: "Home", href: "/#" },
@@ -37,87 +52,120 @@ export default function Header() {
   };
 
   return (
-    <header className={`flex items-center justify-between py-4 px-4 sm:px-6 md:px-12 bg-white sticky top-0 z-50 shadow-sm border-b border-zinc-100 transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}>
-      <Link to="/" className="flex items-center gap-2 md:gap-3 text-zinc-950 z-50">
-        <img 
-          src="https://s1.directupload.eu/images/260326/2js28sgi.webp" 
-          alt="Crank Facility Management Logo" 
-          className="h-8 md:h-12 w-auto"
-        />
-      </Link>
-      
-      {/* Desktop Nav */}
-      <nav className="hidden lg:flex gap-8 text-zinc-600 font-medium">
-        {navLinks.map((link) => (
-          <a key={link.name} href={link.href} className="hover:text-zinc-950 transition-colors">
-            {link.name}
-          </a>
-        ))}
-        <button onClick={openContact} className="hover:text-zinc-950 transition-colors">
-          Kontakt
-        </button>
-      </nav>
-      
-      <div className="hidden lg:flex items-center gap-6">
-        <div className="flex items-center gap-4 text-zinc-500">
-          <a href="tel:+491629570163" className="hover:text-zinc-950 transition-colors" aria-label="Telefon">
-            <Phone className="w-5 h-5" />
-          </a>
-          <a href="mailto:info@crank-facility-management.de" className="hover:text-zinc-950 transition-colors" aria-label="E-Mail">
-            <Mail className="w-5 h-5" />
-          </a>
-          <a href="https://instagram.com/crank.facility" target="_blank" rel="noopener noreferrer" className="hover:text-zinc-950 transition-colors" aria-label="Instagram">
-            <Instagram className="w-5 h-5" />
-          </a>
-        </div>
-        <Button onClick={openContact} className="bg-zinc-900 hover:bg-zinc-800 text-white font-semibold px-6">
-          Unverbindliches Angebot anfordern
-        </Button>
-      </div>
-
-      {/* Mobile Menu Toggle */}
-      <button 
-        className="lg:hidden p-2 text-zinc-950 z-50"
-        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        aria-label="Toggle Menu"
-      >
-        {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-      </button>
-
-      {/* Mobile Nav */}
-      {isMobileMenuOpen && (
-        <div className="absolute top-full left-0 right-0 bg-white border-t border-zinc-100 shadow-xl p-6 flex flex-col gap-4 lg:hidden max-h-[80vh] overflow-y-auto">
-          <nav className="flex flex-col gap-4 text-zinc-700 font-medium text-lg">
+    <>
+      <header className={`fixed z-40 transition-all duration-300 ${
+        !isScrolled 
+          ? 'top-4 left-4 right-4 md:top-6 md:left-8 md:right-8 lg:left-12 lg:right-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 py-3 px-6' 
+          : 'top-0 left-0 right-0 bg-[#1A1A1A] py-4 px-4 sm:px-6 md:px-12 shadow-md'
+      } text-white ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}>
+        <div className="flex items-center justify-between max-w-[1400px] mx-auto">
+          <Link to="/" className="flex items-center gap-2 md:gap-3 z-50" aria-label="Zur Startseite">
+            <img 
+              src="https://s1.directupload.eu/images/260326/2js28sgi.webp" 
+              alt="Crank Facility Management Logo" 
+              className="h-8 md:h-12 w-auto brightness-0 invert"
+              loading="eager"
+            />
+          </Link>
+          
+          {/* Desktop Nav */}
+          <nav className="hidden lg:flex gap-8 font-medium">
             {navLinks.map((link) => (
-              <a 
-                key={link.name} 
-                href={link.href} 
-                className="hover:text-zinc-950 transition-colors py-2"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
+              <a key={link.name} href={link.href} className="hover:opacity-70 transition-opacity">
                 {link.name}
               </a>
             ))}
-            <button onClick={openContact} className="text-left hover:text-zinc-950 transition-colors py-2">
+            <button onClick={openContact} className="hover:opacity-70 transition-opacity">
               Kontakt
             </button>
           </nav>
-          <Button onClick={openContact} className="w-full bg-zinc-900 hover:bg-zinc-800 text-white font-semibold py-6 text-lg mt-4">
-            Angebot anfordern
-          </Button>
-          <div className="flex justify-center gap-8 mt-6 pt-6 border-t border-zinc-100 text-zinc-500">
-            <a href="tel:+491629570163" className="hover:text-zinc-950 transition-colors" aria-label="Telefon">
-              <Phone className="w-6 h-6" />
-            </a>
-            <a href="mailto:info@crank-facility-management.de" className="hover:text-zinc-950 transition-colors" aria-label="E-Mail">
-              <Mail className="w-6 h-6" />
-            </a>
-            <a href="https://instagram.com/crank.facility" target="_blank" rel="noopener noreferrer" className="hover:text-zinc-950 transition-colors" aria-label="Instagram">
-              <Instagram className="w-6 h-6" />
-            </a>
+          
+          <div className="hidden lg:flex items-center gap-6">
+            <div className="flex items-center gap-4">
+              <a href="tel:+491629570163" className="hover:opacity-70 transition-opacity" aria-label="Telefon">
+                <Phone className="w-5 h-5" />
+              </a>
+              <a href="mailto:info@crank-facility-management.de" className="hover:opacity-70 transition-opacity" aria-label="E-Mail">
+                <Mail className="w-5 h-5" />
+              </a>
+              <a href="https://instagram.com/crank.facility" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity" aria-label="Instagram">
+                <Instagram className="w-5 h-5" />
+              </a>
+            </div>
+            <Button onClick={openContact} className="bg-white text-black hover:bg-gray-200 font-semibold px-6">
+              Unverbindliches Angebot anfordern
+            </Button>
+          </div>
+
+          {/* Mobile Menu Toggle */}
+          <button 
+            className="lg:hidden p-2 z-50"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle Menu"
+          >
+            <Menu className="w-6 h-6" />
+          </button>
+        </div>
+      </header>
+
+      {/* Mobile Nav Overlay */}
+      {isMobileMenuOpen && (
+        <div className="fixed inset-0 z-50 bg-[#1A1A1A] text-white flex flex-col animate-in fade-in duration-200">
+          <div className="flex items-center justify-between py-4 px-4 sm:px-6 md:px-12 border-b border-zinc-800">
+            <Link to="/" className="flex items-center gap-2 md:gap-3" onClick={() => setIsMobileMenuOpen(false)} aria-label="Zur Startseite">
+              <img 
+                src="https://s1.directupload.eu/images/260326/2js28sgi.webp" 
+                alt="Crank Facility Management Logo" 
+                className="h-8 md:h-12 w-auto brightness-0 invert"
+                loading="lazy"
+              />
+            </Link>
+            <button 
+              className="p-2 hover:bg-zinc-800 rounded-full transition-colors"
+              onClick={() => setIsMobileMenuOpen(false)}
+              aria-label="Close Menu"
+            >
+              <X className="w-6 h-6" />
+            </button>
+          </div>
+          
+          <div className="flex-1 overflow-y-auto p-6 flex flex-col gap-8">
+            <nav className="flex flex-col gap-6 text-xl font-medium mt-4">
+              {navLinks.map((link) => (
+                <a 
+                  key={link.name} 
+                  href={link.href} 
+                  className="hover:text-zinc-400 transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {link.name}
+                </a>
+              ))}
+              <button onClick={openContact} className="text-left hover:text-zinc-400 transition-colors">
+                Kontakt
+              </button>
+            </nav>
+            
+            <div className="mt-auto">
+              <Button onClick={openContact} className="w-full bg-white text-[#1A1A1A] hover:bg-zinc-200 font-semibold py-6 text-lg mb-8">
+                Angebot anfordern
+              </Button>
+              
+              <div className="flex justify-center gap-8 pt-8 border-t border-zinc-800 text-zinc-400">
+                <a href="tel:+491629570163" className="hover:text-white transition-colors" aria-label="Telefon">
+                  <Phone className="w-6 h-6" />
+                </a>
+                <a href="mailto:info@crank-facility-management.de" className="hover:text-white transition-colors" aria-label="E-Mail">
+                  <Mail className="w-6 h-6" />
+                </a>
+                <a href="https://instagram.com/crank.facility" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors" aria-label="Instagram">
+                  <Instagram className="w-6 h-6" />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       )}
-    </header>
+    </>
   );
 }

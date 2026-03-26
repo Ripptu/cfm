@@ -56,7 +56,7 @@ export default function ContactModal() {
   };
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-zinc-950/80 backdrop-blur-sm">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-[#1A1A1A]/80 backdrop-blur-sm">
       <div 
         className="bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden relative flex flex-col max-h-[90vh] animate-in fade-in zoom-in-95 duration-200"
       >
@@ -68,7 +68,7 @@ export default function ContactModal() {
         </button>
         
         <div className="p-4 sm:p-6 md:p-8 overflow-y-auto">
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-zinc-950 mb-1 sm:mb-2 font-sans">Kontakt aufnehmen</h2>
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#1A1A1A] mb-1 sm:mb-2 font-sans">Kontakt aufnehmen</h2>
           <p className="text-zinc-600 mb-4 sm:mb-6 md:mb-8 text-xs sm:text-sm md:text-base">Wie möchten Sie uns erreichen? Rufen Sie direkt an oder schreiben Sie uns eine Nachricht.</p>
           
           <a 

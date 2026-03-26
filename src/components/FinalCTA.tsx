@@ -11,7 +11,7 @@ export default function FinalCTA() {
   ];
 
   return (
-    <section id="kontakt" className="py-16 md:py-24 px-4 sm:px-6 md:px-12 bg-zinc-950 text-white text-center scroll-mt-20">
+    <section id="kontakt" className="py-16 md:py-24 px-4 sm:px-6 md:px-12 bg-[#1A1A1A] text-white text-center scroll-mt-20">
       <div className="max-w-4xl mx-auto">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
@@ -43,7 +43,7 @@ export default function FinalCTA() {
         >
           <Button 
             onClick={() => window.dispatchEvent(new CustomEvent('openContactModal'))} 
-            className="w-full sm:w-auto bg-white hover:bg-zinc-200 text-zinc-950 font-bold text-base md:text-lg px-8 md:px-10 py-6 md:py-8 rounded-full shadow-lg hover:shadow-xl transition-all"
+            className="w-full sm:w-auto bg-white hover:bg-zinc-200 text-[#1A1A1A] font-bold text-base md:text-lg px-8 md:px-10 py-6 md:py-8 rounded-full shadow-lg hover:shadow-xl transition-all"
           >
             Jetzt kostenlose Beratung anfordern
           </Button>

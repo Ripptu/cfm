@@ -6,6 +6,7 @@ import ClientLogos from '../components/ClientLogos';
 import Services from '../components/Services';
 import TrustedService from '../components/TrustedService';
 import Solution from '../components/Solution';
+import FAQ from '../components/FAQ';
 import FinalCTA from '../components/FinalCTA';
 import Footer from '../components/Footer';
 
@@ -28,12 +29,15 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white overflow-x-hidden flex flex-col w-full">
       <Header />
-      <Hero />
-      <ClientLogos />
-      <Services />
-      <TrustedService />
-      <Solution />
-      <FinalCTA />
+      <main>
+        <Hero />
+        <ClientLogos />
+        <Services />
+        <TrustedService />
+        <Solution />
+        <FAQ />
+        <FinalCTA />
+      </main>
       <Footer />
     </div>
   );

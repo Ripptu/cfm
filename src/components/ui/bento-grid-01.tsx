@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "motion/react"
-import { Lock, Zap, Globe, Sparkles } from "lucide-react"
+import { Lock, Zap, Globe, Sparkles, Wrench, Leaf } from "lucide-react"
 
 function CleaningAnimation() {
   const [scale, setScale] = useState(1)
@@ -56,52 +56,6 @@ function LayoutAnimation() {
   )
 }
 
-function SpeedIndicator() {
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    const timeout = setTimeout(() => setLoading(false), 500)
-    return () => clearTimeout(timeout)
-  }, [])
-
-  return (
-    <div className="flex flex-col items-center justify-center h-full gap-4">
-      <div className="h-10 flex items-center justify-center overflow-hidden relative w-full">
-        <AnimatePresence mode="wait">
-          {loading ? (
-            <motion.div
-              key="loader"
-              className="h-8 w-24 bg-white/10 rounded"
-              initial={{ opacity: 0.5 }}
-              animate={{ opacity: [0.4, 0.7, 0.4] }}
-              exit={{ opacity: 0, y: -20, position: 'absolute' }}
-              transition={{ duration: 1, repeat: Infinity }}
-            />
-          ) : (
-            <motion.span
-              key="text"
-              initial={{ y: 20, opacity: 0, filter: "blur(5px)" }}
-              animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
-              className="text-3xl md:text-4xl font-sans font-medium text-white"
-            >
-              Schnell
-            </motion.span>
-          )}
-        </AnimatePresence>
-      </div>
-      <span className="text-sm text-gray-400">Reaktionszeit</span>
-      <div className="w-full max-w-[120px] h-1.5 bg-white/10 rounded-full overflow-hidden">
-        <motion.div
-          className="h-full bg-white rounded-full"
-          initial={{ width: 0 }}
-          animate={{ width: loading ? 0 : "100%" }}
-          transition={{ type: "spring", stiffness: 100, damping: 15, mass: 1 }}
-        />
-      </div>
-    </div>
-  )
-}
-
 function SecurityBadge() {
   const [shields, setShields] = useState([
     { id: 1, active: false },
@@ -135,30 +89,6 @@ function SecurityBadge() {
         >
           <Lock className={`w-5 h-5 ${shield.active ? 'text-white' : 'text-gray-600'}`} />
         </motion.div>
-      ))}
-    </div>
-  )
-}
-
-function GlobalNetwork() {
-  const [pulses] = useState([0, 1, 2, 3, 4])
-
-  return (
-    <div className="flex items-center justify-center h-full relative">
-      <Globe className="w-16 h-16 text-white/80 z-10" />
-      {pulses.map((pulse) => (
-        <motion.div
-          key={pulse}
-          className="absolute w-16 h-16 border-2 border-white/30 rounded-full"
-          initial={{ scale: 0.5, opacity: 1 }}
-          animate={{ scale: 3, opacity: 0 }}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            delay: pulse * 0.8,
-            ease: "easeOut"
-          }}
-        />
       ))}
     </div>
   )
@@ -213,13 +143,11 @@ export default function BentoGrid01() {
         whileHover={{ scale: 1.02, boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)" }}
       >
         <div className="flex-1 flex items-center justify-center">
-          <div className="relative">
-            <GlobalNetwork />
-          </div>
+          <Leaf className="w-16 h-16 text-white" />
         </div>
         <div className="mt-auto relative z-20 bg-zinc-900/50 backdrop-blur-sm rounded-lg p-2">
           <h3 className="font-serif text-xl text-white flex items-center gap-2 font-medium">
-            <Globe className="w-5 h-5" />
+            <Leaf className="w-5 h-5" />
             Grünanlagenpflege
           </h3>
           <p className="text-gray-400 text-sm mt-1">Gepflegte Außenanlagen, die einen perfekten ersten Eindruck hinterlassen.</p>
@@ -235,8 +163,8 @@ export default function BentoGrid01() {
         transition={{ delay: 0.3 }}
         whileHover={{ scale: 0.98 }}
       >
-        <div className="flex-1">
-          <SpeedIndicator />
+        <div className="flex-1 flex items-center justify-center">
+          <Wrench className="w-16 h-16 text-white" />
         </div>
         <div className="mt-4">
           <h3 className="font-serif text-xl text-white font-medium">Hausmeisterservice</h3>

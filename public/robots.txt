@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://crank-facility-management.de/sitemap.xml

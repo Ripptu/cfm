@@ -10,7 +10,7 @@ export default function AGB() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-zinc-950 flex flex-col">
+    <div className="min-h-screen bg-[#1A1A1A] flex flex-col">
       <Header />
       <main className="flex-grow max-w-4xl mx-auto w-full px-6 py-24">
         <Link to="/" className="inline-flex items-center gap-2 text-zinc-400 hover:text-white font-semibold mb-12 transition-colors">

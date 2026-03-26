@@ -3,7 +3,7 @@ import BentoGrid01 from "./ui/bento-grid-01";
 
 export default function Services() {
   return (
-    <section id="leistungen" className="py-16 md:py-24 px-4 sm:px-6 md:px-12 bg-zinc-950 scroll-mt-20">
+    <section id="leistungen" className="py-16 md:py-24 px-4 sm:px-6 md:px-12 bg-[#1A1A1A] scroll-mt-20">
       <div className="max-w-4xl mx-auto text-center mb-12 md:mb-16">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}

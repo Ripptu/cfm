@@ -16,7 +16,7 @@ export default function TrustedService() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl sm:text-4xl md:text-5xl font-bold text-zinc-950 mb-8 md:mb-12 leading-tight font-sans"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1A1A1A] mb-8 md:mb-12 leading-tight font-sans"
           >
             Verlässlicher Service <br/>
             <span className="font-serif italic font-normal text-zinc-500">für Ihre Bedürfnisse</span>
@@ -50,6 +50,7 @@ export default function TrustedService() {
             alt="Facility management technician checking electrical panel" 
             className="absolute inset-0 w-full h-full object-cover" 
             referrerPolicy="no-referrer" 
+            loading="lazy"
           />
         </motion.div>
       </div>

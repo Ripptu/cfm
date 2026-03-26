@@ -3,15 +3,17 @@ import { motion } from "motion/react";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[100vh] sm:min-h-[600px] md:h-[700px] bg-zinc-950 text-white flex items-center px-4 sm:px-6 md:px-12 pt-24 md:pt-0 pb-32 sm:pb-0">
-      <div className="absolute inset-0 bg-black/30 z-10"></div>
+    <section className="relative min-h-[100vh] sm:min-h-[600px] md:h-[700px] bg-[#1A1A1A] text-white flex items-center px-4 sm:px-6 md:px-12 pt-24 md:pt-0 pb-32 sm:pb-0">
+      <div className="absolute inset-0 bg-black/60 sm:bg-black/30 z-10"></div>
       <img 
         src="https://s1.directupload.eu/images/260326/n3pxmbbj.webp" 
         alt="Modern commercial building" 
         className="absolute inset-0 w-full h-full object-cover"
         referrerPolicy="no-referrer"
+        loading="eager"
+        fetchpriority="high"
       />
-      <div className="relative z-20 max-w-3xl mx-auto lg:mx-0 w-full mt-10 sm:mt-0">
+      <div className="relative z-20 max-w-4xl mx-auto w-full mt-10 sm:mt-0 flex flex-col items-center text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -37,20 +39,13 @@ export default function Hero() {
           </a>
         </motion.div>
 
-        <motion.p 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-xs sm:text-sm md:text-base uppercase tracking-widest mb-3 md:mb-4 text-zinc-300 font-semibold"
-        >
-          CRANK FACILITY MANAGEMENT
-        </motion.p>
         <motion.h1 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 md:mb-8 leading-tight font-sans"
         >
+          <span className="sr-only">Facility Management, Hausmeisterservice & Gebäudereinigung in Geretsried, Wolfratshausen & Bad Tölz. </span>
           Ihre Immobilie <br className="hidden sm:block"/>
           <span className="font-serif italic font-normal text-zinc-400">in besten Händen.</span>
         </motion.h1>
@@ -58,7 +53,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="flex flex-col sm:flex-row items-start sm:items-center gap-4"
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full"
         >
           <button onClick={() => window.dispatchEvent(new CustomEvent('openContactModal'))} className="inline-flex items-center justify-center gap-2 text-base md:text-lg font-semibold hover:text-zinc-400 transition-colors group bg-white/10 sm:bg-transparent px-6 py-3 sm:px-0 sm:py-0 rounded-full sm:rounded-none w-full sm:w-auto backdrop-blur-sm sm:backdrop-blur-none border border-white/20 sm:border-none">
             Kostenlose Erstberatung vereinbaren 
