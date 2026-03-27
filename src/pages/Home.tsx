@@ -6,6 +6,7 @@ import ClientLogos from '../components/ClientLogos';
 import Services from '../components/Services';
 import TrustedService from '../components/TrustedService';
 import Solution from '../components/Solution';
+import HowItWorks from '../components/HowItWorks';
 import FAQ from '../components/FAQ';
 import FinalCTA from '../components/FinalCTA';
 import Footer from '../components/Footer';
@@ -34,6 +35,7 @@ export default function Home() {
         <ClientLogos />
         <Services />
         <TrustedService />
+        <HowItWorks />
         <Solution />
         <FAQ />
         <FinalCTA />

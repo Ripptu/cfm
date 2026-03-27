@@ -111,7 +111,11 @@ export default function BentoGrid01() {
         </div>
         <div className="mt-4">
           <h3 className="font-serif text-xl text-white font-medium">Unterhaltsreinigung</h3>
-          <p className="text-gray-400 text-sm mt-1">Gründliche, regelmäßige Reinigung für ein repräsentatives Erscheinungsbild.</p>
+          <ul className="text-gray-400 text-sm mt-2 space-y-1">
+            <li className="flex items-center gap-1.5"><span className="w-1 h-1 rounded-full bg-zinc-500"></span> Büro & Gewerbe</li>
+            <li className="flex items-center gap-1.5"><span className="w-1 h-1 rounded-full bg-zinc-500"></span> Treppenhäuser</li>
+            <li className="flex items-center gap-1.5"><span className="w-1 h-1 rounded-full bg-zinc-500"></span> Fenster & Fassaden</li>
+          </ul>
         </div>
       </motion.div>
 
@@ -145,12 +149,16 @@ export default function BentoGrid01() {
         <div className="flex-1 flex items-center justify-center">
           <Leaf className="w-16 h-16 text-white" />
         </div>
-        <div className="mt-auto relative z-20 bg-zinc-900/50 backdrop-blur-sm rounded-lg p-2">
+        <div className="mt-auto relative z-20 bg-zinc-900/50 backdrop-blur-sm rounded-lg p-3">
           <h3 className="font-serif text-xl text-white flex items-center gap-2 font-medium">
             <Leaf className="w-5 h-5" />
             Grünanlagenpflege
           </h3>
-          <p className="text-gray-400 text-sm mt-1">Gepflegte Außenanlagen, die einen perfekten ersten Eindruck hinterlassen.</p>
+          <ul className="text-gray-400 text-sm mt-2 space-y-1">
+            <li className="flex items-center gap-1.5"><span className="w-1 h-1 rounded-full bg-zinc-500"></span> Rasen- & Heckenschnitt</li>
+            <li className="flex items-center gap-1.5"><span className="w-1 h-1 rounded-full bg-zinc-500"></span> Unkrautbeseitigung</li>
+            <li className="flex items-center gap-1.5"><span className="w-1 h-1 rounded-full bg-zinc-500"></span> Winterdienst</li>
+          </ul>
         </div>
       </motion.div>
 

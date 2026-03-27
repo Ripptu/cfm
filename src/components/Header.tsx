@@ -79,27 +79,27 @@ export default function Header() {
               Kontakt
             </button>
           </nav>
-          
-          <div className="hidden lg:flex items-center gap-6">
+                    <div className="hidden lg:flex items-center gap-6">
             <div className="flex items-center gap-4">
-              <a href="tel:+491629570163" className="hover:opacity-70 transition-opacity" aria-label="Telefon">
+              <a href="tel:+491629570163" className="hover:opacity-70 transition-opacity p-2 -m-2 flex items-center gap-2" aria-label="Telefon">
                 <Phone className="w-5 h-5" />
+                <span className="font-semibold">0162 9570163</span>
               </a>
-              <a href="mailto:info@crank-facility-management.de" className="hover:opacity-70 transition-opacity" aria-label="E-Mail">
+              <a href="mailto:info@crank-facility-management.de" className="hover:opacity-70 transition-opacity p-2 -m-2" aria-label="E-Mail">
                 <Mail className="w-5 h-5" />
               </a>
-              <a href="https://instagram.com/crank.facility" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity" aria-label="Instagram">
+              <a href="https://instagram.com/crank.facility" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity p-2 -m-2" aria-label="Instagram">
                 <Instagram className="w-5 h-5" />
               </a>
             </div>
-            <Button onClick={openContact} className="bg-white text-black hover:bg-gray-200 font-semibold px-6">
+            <Button onClick={openContact} className="bg-white text-black hover:bg-gray-200 font-semibold px-6 min-h-[44px]">
               Unverbindliches Angebot anfordern
             </Button>
           </div>
 
           {/* Mobile Menu Toggle */}
           <button 
-            className="lg:hidden p-2 z-50"
+            className="lg:hidden p-3 -m-3 z-50 flex items-center justify-center min-h-[44px] min-w-[44px]"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle Menu"
           >
@@ -121,7 +121,7 @@ export default function Header() {
               />
             </Link>
             <button 
-              className="p-2 hover:bg-zinc-800 rounded-full transition-colors"
+              className="p-3 -m-3 hover:bg-zinc-800 rounded-full transition-colors flex items-center justify-center min-h-[44px] min-w-[44px]"
               onClick={() => setIsMobileMenuOpen(false)}
               aria-label="Close Menu"
             >
@@ -135,30 +135,30 @@ export default function Header() {
                 <a 
                   key={link.name} 
                   href={link.href} 
-                  className="hover:text-zinc-400 transition-colors"
+                  className="hover:text-zinc-400 transition-colors py-2"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.name}
                 </a>
               ))}
-              <button onClick={openContact} className="text-left hover:text-zinc-400 transition-colors">
+              <button onClick={openContact} className="text-left hover:text-zinc-400 transition-colors py-2">
                 Kontakt
               </button>
             </nav>
             
             <div className="mt-auto">
-              <Button onClick={openContact} className="w-full bg-white text-[#1A1A1A] hover:bg-zinc-200 font-semibold py-6 text-lg mb-8">
+              <Button onClick={openContact} className="w-full bg-white text-[#1A1A1A] hover:bg-zinc-200 font-semibold py-6 text-lg mb-8 min-h-[56px]">
                 Angebot anfordern
               </Button>
               
               <div className="flex justify-center gap-8 pt-8 border-t border-zinc-800 text-zinc-400">
-                <a href="tel:+491629570163" className="hover:text-white transition-colors" aria-label="Telefon">
+                <a href="tel:+491629570163" className="hover:text-white transition-colors p-2 -m-2 flex items-center justify-center min-h-[44px] min-w-[44px]" aria-label="Telefon">
                   <Phone className="w-6 h-6" />
                 </a>
-                <a href="mailto:info@crank-facility-management.de" className="hover:text-white transition-colors" aria-label="E-Mail">
+                <a href="mailto:info@crank-facility-management.de" className="hover:text-white transition-colors p-2 -m-2 flex items-center justify-center min-h-[44px] min-w-[44px]" aria-label="E-Mail">
                   <Mail className="w-6 h-6" />
                 </a>
-                <a href="https://instagram.com/crank.facility" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors" aria-label="Instagram">
+                <a href="https://instagram.com/crank.facility" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors p-2 -m-2 flex items-center justify-center min-h-[44px] min-w-[44px]" aria-label="Instagram">
                   <Instagram className="w-6 h-6" />
                 </a>
               </div>

@@ -16,15 +16,15 @@ export default function Footer() {
               />
             </Link>
             <div className="flex flex-col sm:flex-row items-center md:items-start gap-4 sm:gap-6 text-zinc-400">
-              <a href="tel:+491629570163" className="hover:text-white transition-colors flex items-center gap-2">
+              <a href="tel:+491629570163" className="hover:text-white transition-colors flex items-center gap-2 p-2 -m-2 min-h-[44px]">
                 <Phone className="w-4 h-4" /> 
                 <span className="text-sm">0162 9570163</span>
               </a>
-              <a href="mailto:info@crank-facility-management.de" className="hover:text-white transition-colors flex items-center gap-2">
+              <a href="mailto:info@crank-facility-management.de" className="hover:text-white transition-colors flex items-center gap-2 p-2 -m-2 min-h-[44px]">
                 <Mail className="w-4 h-4" /> 
                 <span className="text-sm">E-Mail senden</span>
               </a>
-              <a href="https://instagram.com/crank.facility" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-2">
+              <a href="https://instagram.com/crank.facility" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-2 p-2 -m-2 min-h-[44px]">
                 <Instagram className="w-4 h-4" /> 
                 <span className="text-sm">@crank.facility</span>
               </a>
