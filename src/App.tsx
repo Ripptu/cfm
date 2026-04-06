@@ -3,23 +3,8 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import Impressum from './pages/Impressum';
-import Datenschutz from './pages/Datenschutz';
-import AGB from './pages/AGB';
-import ContactModal from './components/ContactModal';
+import Maintenance from './pages/Maintenance';
 
 export default function App() {
-  return (
-    <Router>
-      <ContactModal />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/impressum" element={<Impressum />} />
-        <Route path="/datenschutz" element={<Datenschutz />} />
-        <Route path="/agb" element={<AGB />} />
-      </Routes>
-    </Router>
-  );
+  return <Maintenance />;
 }
