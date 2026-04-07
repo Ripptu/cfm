@@ -5,6 +5,8 @@ import { Button } from '@/components/ui/button';
 export default function ContactModal() {
   const [isOpen, setIsOpen] = useState(false);
   const [formData, setFormData] = useState({ name: '', message: '' });
+  const [privacyAccepted, setPrivacyAccepted] = useState(false);
+  const [showPrivacyError, setShowPrivacyError] = useState(false);
 
   useEffect(() => {
     const handleOpen = () => {
@@ -43,12 +45,20 @@ export default function ContactModal() {
   const emailAddress = "info@crank-facility-management.de";
 
   const handleWhatsApp = () => {
+    if (!privacyAccepted) {
+      setShowPrivacyError(true);
+      return;
+    }
     const text = `Hallo Crank Facility Management,\n\nMein Name ist ${formData.name}.\n\n${formData.message}`;
     window.open(`https://wa.me/${phoneNumber.replace('+', '')}?text=${encodeURIComponent(text)}`, '_blank');
     closeModal();
   };
 
   const handleEmail = () => {
+    if (!privacyAccepted) {
+      setShowPrivacyError(true);
+      return;
+    }
     const subject = "Anfrage über Website";
     const body = `Hallo Crank Facility Management,\n\nMein Name ist ${formData.name}.\n\n${formData.message}`;
     window.location.href = `mailto:${emailAddress}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
@@ -105,6 +115,27 @@ export default function ContactModal() {
                 placeholder="Ich interessiere mich für ein Angebot bezüglich..."
               ></textarea>
             </div>
+            
+            <div className="flex items-start gap-3 pt-2">
+              <div className="flex items-center h-5 mt-0.5">
+                <input
+                  id="privacy"
+                  type="checkbox"
+                  checked={privacyAccepted}
+                  onChange={(e) => {
+                    setPrivacyAccepted(e.target.checked);
+                    if (e.target.checked) setShowPrivacyError(false);
+                  }}
+                  className="w-4 h-4 rounded border-zinc-300 text-zinc-900 focus:ring-zinc-900"
+                />
+              </div>
+              <label htmlFor="privacy" className="text-xs sm:text-sm text-zinc-600 leading-tight">
+                Ich habe die <a href="/datenschutz" target="_blank" className="text-zinc-900 underline hover:text-zinc-700">Datenschutzerklärung</a> zur Kenntnis genommen und stimme zu, dass meine Angaben zur Kontaktaufnahme gespeichert werden.
+              </label>
+            </div>
+            {showPrivacyError && (
+              <p className="text-red-500 text-xs sm:text-sm mt-1">Bitte akzeptieren Sie die Datenschutzerklärung, um fortzufahren.</p>
+            )}
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 md:gap-4">

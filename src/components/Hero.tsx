@@ -43,12 +43,20 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 md:mb-8 leading-tight font-sans"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-6 leading-tight font-sans"
         >
           <span className="sr-only">Facility Management, Hausmeisterservice & Gebäudereinigung in Geretsried, Wolfratshausen & Bad Tölz. </span>
-          Ihre Immobilie <br className="hidden sm:block"/>
-          <span className="font-serif italic font-normal text-zinc-400">in besten Händen.</span>
+          Hausmeisterservice & <br className="hidden sm:block"/>
+          <span className="font-serif italic font-normal text-zinc-400">Gartenpflege</span>
         </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="text-lg sm:text-xl text-zinc-300 mb-8 max-w-2xl"
+        >
+          Ihr zuverlässiger Partner in Geretsried, Wolfratshausen und Umgebung.
+        </motion.p>
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
