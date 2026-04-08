@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 export default function Hero() {
   return (
     <section className="relative min-h-[100vh] sm:min-h-[600px] md:h-[700px] bg-[#1A1A1A] text-white flex items-center px-4 sm:px-6 md:px-12 pt-24 md:pt-0 pb-32 sm:pb-0">
-      <div className="absolute inset-0 bg-black/60 sm:bg-black/30 z-10"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-[#1A1A1A] z-10"></div>
       <img 
         src="https://s1.directupload.eu/images/260326/n3pxmbbj.webp" 
         alt="Modern commercial building" 
@@ -43,17 +43,17 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-6 leading-tight font-sans"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-6 leading-tight font-sans drop-shadow-xl"
         >
           <span className="sr-only">Facility Management, Hausmeisterservice & Gebäudereinigung in Geretsried, Wolfratshausen & Bad Tölz. </span>
           Hausmeisterservice & <br className="hidden sm:block"/>
-          <span className="font-serif italic font-normal text-zinc-400">Gartenpflege</span>
+          <span className="font-serif italic font-normal text-emerald-400 drop-shadow-md">Gartenpflege</span>
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-lg sm:text-xl text-zinc-300 mb-8 max-w-2xl"
+          className="text-lg sm:text-xl text-zinc-100 mb-8 max-w-2xl drop-shadow-md font-medium"
         >
           Ihr zuverlässiger Partner in Geretsried, Wolfratshausen und Umgebung.
         </motion.p>
